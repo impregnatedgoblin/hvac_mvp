@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydromix BP — Business Precision</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Tektur:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta Kolorów */
+            --alert-yellow: #FCED21;
+            --deep-dark-steel: #1C1F23;
+            --deep-industrial-steel: #2B2F33;
+            --steel-mid: #6E7781;
+            --light-steel: #D9DEE3;
+            --bg-light: #F4F6F8;
+
+            /* MATRYCA TYPOGRAFICZNA */
+            --fs-h2:            3.875rem; 
+            --fs-body:          1.250rem; 
+            --fs-micro:         1.000rem; 
+            
+            --lh-tight:         1.05;
+            --lh-normal:        1.65;
+
+            /* TŁUMIENIE ANIMACJI */
+            --cb-mechanical: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--deep-dark-steel);
+            line-height: var(--lh-normal);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 1. NAGŁÓWEK WIZYTÓWKI */
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 64px; 
+            z-index: 100;
+        }
+
+        .logo-container {
+            height: 240px; 
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        /* CORE LAYOUT */
+        .container {
+            max-width: 100%; 
+            margin: 0;
+            padding: 0; 
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 2. MANIFEST BLOCK (HERO) */
+        .hero-outer {
+            width: 100%;
+            background-color: var(--deep-dark-steel);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(135deg, rgba(28, 31, 35, 0.96) 40%, rgba(28, 31, 35, 0.75) 100%), 
+                        url('assets/background_photo_hbp.png') center center / cover no-repeat;
+            transform: scale(1.05);
+            transition: transform 1.2s var(--cb-mechanical);
+        }
+        
+        body.loaded .hero-bg-image {
+            transform: scale(1);
+        }
+
+        .hero {
+            padding-top: 360px; 
+            padding-bottom: 120px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-content-block {
+            padding-left: 300px; 
+            padding-right: 24px;
+            width: 100%;
+        }
+
+        .hero-title-mask {
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        .hero h1 {
+            font-size: var(--fs-h2); 
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: var(--lh-tight);
+            max-width: 900px;
+            color: #FFFFFF;
+            transform: translateY(100%);
+            transition: transform 1s var(--cb-mechanical);
+        }
+        body.loaded .hero h1 {
+            transform: translateY(0);
+        }
+
+        .hero-sub {
+            font-size: var(--fs-body);
+            font-weight: 400;
+            color: var(--light-steel);
+            max-width: 720px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s var(--cb-mechanical) 0.2s, transform 1s var(--cb-mechanical) 0.2s;
+        }
+        body.loaded .hero-sub {
+            opacity: 0.95;
+            transform: translateY(0);
+        }
+
+        .highlight-yellow {
+            background-color: var(--alert-yellow);
+            color: var(--deep-dark-steel);
+            padding: 2px 8px;
+            font-weight: 500;
+            display: inline-block;
+            line-height: 1.1;
+        }
+
+        /* 3. INŻYNIERYJNY DIVIDER INTERFEJSU */
+        .tech-divider-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0;
+            background-color: var(--bg-light);
+        }
+        
+        .tech-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: rgba(217, 222, 227, 0.8);
+        }
+
+        .tech-marker {
+            font-family: 'Tektur', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--steel-mid);
+            padding: 16px 24px; /* Idealne 24px */
+            user-select: none;
+        }
+
+        /* 4. KONTAKT I INTEGRACJA OFERTOWA (DOLNY BLOK) */
+        .contact {
+            padding-top: 100px;
+            padding-bottom: 64px;
+            padding-left: 24px; /* Idealne 24px */
+            padding-right: 24px; /* Idealne 24px */
+            background-color: var(--bg-light);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 96px;
+        }
+
+        .contact h2 {
+            font-size: var(--fs-h2);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: var(--lh-tight);
+            color: var(--deep-dark-steel);
+            max-width: 500px;
+        }
+
+        .raw-form {
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-group label {
+            font-size: var(--fs-micro);
+            font-weight: 500;
+            color: var(--steel-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input, .form-group textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--light-steel);
+            padding: 16px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--fs-body);
+            color: var(--deep-dark-steel);
+            outline: none;
+            transition: border-color 0.3s var(--cb-mechanical);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-bottom-color: var(--deep-dark-steel);
+        }
+
+        .submit-btn {
+            align-self: flex-start;
+            background: transparent;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--fs-body);
+            font-weight: 500;
+            color: var(--deep-dark-steel);
+            cursor: pointer;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: transform 0.3s var(--cb-mechanical), color 0.3s var(--cb-mechanical), border-bottom-color 0.3s var(--cb-mechanical);
+        }
+
+        .submit-btn:hover {
+            transform: translateX(8px);
+            border-bottom-color: var(--alert-yellow);
+        }
+
+        .footer-meta {
+            margin-top: 140px;
+            padding-top: 64px;
+            border-top: 1px solid var(--light-steel);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            font-size: var(--fs-micro);
+            color: var(--steel-mid);
+        }
+
+        .footer-meta p strong {
+            color: var(--deep-dark-steel);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 1200px) {
+            .main-header { padding: 32px 24px; }
+            .logo-container { height: 160px; }
+            .hero { padding-top: 280px; }
+            .hero-content-block { padding-left: 0; padding-right: 0; }
+            .contact { padding-left: 24px; padding-right: 24px; }
+            .tech-marker { padding: 16px 24px; }
+            .hero h1 { font-size: 2.8rem; max-width: 100%; }
+            .contact h2 { font-size: 2.8rem; max-width: 100%; }
+            .contact-layout { grid-template-columns: 1fr; gap: 64px; }
+            .footer-meta { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body id="body-context">
+
+    <header class="main-header" id="header">
+        <div class="logo-container">
+            <img src="assets/hbp_logo_white.png" alt="HBP Logo" class="logo-img" id="mainLogo">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="hero-outer">
+            <div class="hero-bg-image"></div>
+            <section class="hero">
+                <div class="hero-content-block">
+                    <div class="hero-title-mask">
+                        <h1>partner w prefabrykacji i&nbsp;technologiach spawalniczych.</h1>
+                    </div>
+                    <p class="hero-sub">Dostarczamy gotowe moduły rurociągowe dla branży HVAC i przemysłu. Łączymy precyzję certyfikowanych spawalni z inżynierskim wsparciem. Trwa wdrażanie pełnej dokumentacji cyfrowej serwisu. Jesteśmy Twoim <span class="highlight-yellow">fundamentem</span>.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="tech-divider-container"><div class="tech-line"></div><div class="tech-marker">+</div></div>
+
+        <section id="contact" class="contact">
+            <div class="contact-layout">
+                <h2>Porozmawiajmy o Twojej inwestycji.</h2>
+                
+                <form class="raw-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko / Firma</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adres e-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Specyfikacja projektu / Zakres prac / Link do dokumentacji</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Wyślij specyfikację techniczną &rarr;</button>
+                </form>
+            </div>
+
+            <footer class="footer-meta">
+                <p><strong>Hydromix BP Sp. z o.o.</strong>Business Precision</p>
+                <p><strong>Adres pracowni</strong>ul. Technologiczna 12<br>00-000 Przemysł</p>
+                <p><strong>Rejestr spółki</strong>NIP: 000-000-00-00<br>KRS: 0000000000</p>
+                <p><strong>Kontakt bezpośredni</strong>biuro@hydromixbp.pl<br>+48 000 000 000</p>
+            </footer>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
