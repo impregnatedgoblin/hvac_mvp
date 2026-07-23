@@ -182,7 +182,7 @@
             font-size: 14px;
             font-weight: 600;
             color: var(--steel-mid);
-            padding: 16px 24px; /* Idealne 24px */
+            padding: 16px 24px;
             user-select: none;
         }
 
@@ -190,8 +190,8 @@
         .contact {
             padding-top: 100px;
             padding-bottom: 64px;
-            padding-left: 24px; /* Idealne 24px */
-            padding-right: 24px; /* Idealne 24px */
+            padding-left: 24px;
+            padding-right: 24px;
             background-color: var(--bg-light);
         }
 
@@ -265,6 +265,28 @@
             border-bottom-color: var(--alert-yellow);
         }
 
+        /* NOTA PRYWATNOŚCI POD FORMULARZEM */
+        .privacy-notice {
+            font-size: var(--fs-micro);
+            color: var(--steel-mid);
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .privacy-link {
+            color: var(--deep-dark-steel);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: 500;
+            transition: color 0.3s var(--cb-mechanical), background-color 0.3s var(--cb-mechanical);
+        }
+
+        .privacy-link:hover {
+            color: var(--deep-dark-steel);
+            background-color: var(--alert-yellow);
+            text-decoration: none;
+        }
+
         .footer-meta {
             margin-top: 140px;
             padding-top: 64px;
@@ -313,7 +335,7 @@
             <section class="hero">
                 <div class="hero-content-block">
                     <div class="hero-title-mask">
-                        <h1>partner w prefabrykacji i&nbsp;technologiach spawalniczych.</h1>
+                        <h1>partner w prefabrykacji i&nbsp;technologiach spawalniczych</h1>
                     </div>
                     <p class="hero-sub">Dostarczamy gotowe moduły rurociągowe dla branży HVAC i przemysłu. Łączymy precyzję certyfikowanych spawalni z inżynierskim wsparciem. Trwa wdrażanie pełnej dokumentacji cyfrowej serwisu. Jesteśmy Twoim <span class="highlight-yellow">fundamentem</span>.</p>
                 </div>
@@ -339,7 +361,10 @@
                         <label for="message">Specyfikacja projektu / Zakres prac / Link do dokumentacji</label>
                         <textarea id="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Wyślij specyfikację techniczną &rarr;</button>
+                    <div class="form-action-block">
+                        <button type="submit" class="submit-btn">Wyślij specyfikację techniczną &rarr;</button>
+                        <p class="privacy-notice">Wysyłając formularz, akceptujesz przetwarzanie danych zgodnie z naszą <a href="polityka-prywatnosci.html" class="privacy-link">Polityką Prywatności</a>.</p>
+                    </div>
                 </form>
             </div>
 
