@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności — Hydromix BP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Tektur:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* PALETA KOLORÓW BRANDU */
+            --alert-yellow: #FCED21;
+            --deep-dark-steel: #1C1F23;
+            --deep-industrial-steel: #2B2F33;
+            --steel-mid: #6E7781;
+            --light-steel: #D9DEE3;
+            --bg-light: #F4F6F8;
+
+            /* MATRYCA TYPOGRAFICZNA */
+            --fs-h2:            3.875rem; 
+            --fs-h3:            2.500rem;
+            --fs-body:          1.250rem; 
+            --fs-micro:         1.000rem; 
+            
+            --lh-tight:         1.05;
+            --lh-h3:            1.2;
+            --lh-normal:        1.65;
+
+            /* KINETYKA */
+            --cb-mechanical: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--deep-dark-steel);
+            line-height: var(--lh-normal);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* KLASA IZOLUJĄCA FONT TEKTUR TYLKO DLA CYFR */
+        .tektur-digit {
+            font-family: 'Tektur', sans-serif;
+            font-weight: 600;
+        }
+
+        /* 1. HEADER PODSTRONY */
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 64px; 
+            z-index: 100;
+        }
+
+        .logo-container {
+            height: 240px; 
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            display: block;
+            height: 100%;
+        }
+
+        .logo-img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        .back-link {
+            font-size: var(--fs-micro);
+            font-weight: 500;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: transform 0.3s var(--cb-mechanical), border-bottom-color 0.3s var(--cb-mechanical);
+        }
+
+        .back-link:hover {
+            transform: translateX(-8px);
+            border-bottom-color: var(--alert-yellow);
+        }
+
+        /* CORE LAYOUT */
+        .container {
+            max-width: 100%; 
+            margin: 0;
+            padding: 0; 
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 2. HERO HEADLINE PROTOKOŁU */
+        .hero-outer {
+            width: 100%;
+            background-color: var(--deep-dark-steel);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(135deg, rgba(28, 31, 35, 0.96) 40%, rgba(28, 31, 35, 0.75) 100%), 
+                        url('assets/background_photo_hbp.png') center center / cover no-repeat;
+            transform: scale(1.05);
+            transition: transform 1.2s var(--cb-mechanical);
+        }
+        
+        body.loaded .hero-bg-image {
+            transform: scale(1);
+        }
+
+        .hero {
+            padding-top: 360px; 
+            padding-bottom: 120px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-content-block {
+            padding-left: 300px; 
+            padding-right: 24px;
+            width: 100%;
+        }
+
+        .hero-title-mask {
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        .hero h1 {
+            font-size: var(--fs-h2); 
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: var(--lh-tight);
+            max-width: 900px;
+            color: #FFFFFF;
+            transform: translateY(100%);
+            transition: transform 1s var(--cb-mechanical);
+        }
+
+        body.loaded .hero h1 {
+            transform: translateY(0);
+        }
+
+        .hero-sub {
+            font-size: var(--fs-body);
+            font-weight: 400;
+            color: var(--light-steel);
+            max-width: 720px;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s var(--cb-mechanical) 0.2s, transform 1s var(--cb-mechanical) 0.2s;
+        }
+
+        body.loaded .hero-sub {
+            opacity: 0.95;
+            transform: translateY(0);
+        }
+
+        .doc-date {
+            font-size: var(--fs-micro);
+            color: var(--steel-mid);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s var(--cb-mechanical) 0.3s, transform 1s var(--cb-mechanical) 0.3s;
+        }
+
+        body.loaded .doc-date {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 3. INŻYNIERYJNY DIVIDER INTERFEJSU */
+        .tech-divider-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin: 0;
+            background-color: var(--bg-light);
+        }
+        
+        .tech-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: rgba(217, 222, 227, 0.8);
+        }
+
+        .tech-marker {
+            font-family: 'Tektur', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--steel-mid);
+            padding: 16px 24px;
+            user-select: none;
+        }
+
+        /* 4. SEKCJA DOKUMENTACJI PRAWNEJ */
+        .policy-section {
+            padding-top: 100px;
+            padding-bottom: 64px;
+            padding-left: 24px;
+            padding-right: 24px;
+            background-color: var(--bg-light);
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 96px;
+            align-items: start;
+        }
+
+        .policy-sidebar {
+            position: sticky;
+            top: 60px;
+            font-size: var(--fs-micro);
+            color: var(--steel-mid);
+        }
+
+        .policy-sidebar p strong {
+            color: var(--deep-dark-steel);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .policy-sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .policy-sidebar a {
+            display: inline-block;
+            transition: color 0.3s var(--cb-mechanical), transform 0.3s var(--cb-mechanical);
+        }
+
+        .policy-sidebar a:hover {
+            color: var(--deep-dark-steel);
+            transform: translateX(6px);
+        }
+
+        .policy-content {
+            display: flex;
+            flex-direction: column;
+            gap: 96px;
+            max-width: 800px;
+        }
+
+        .policy-block {
+            border-top: 1px solid var(--light-steel);
+            padding-top: 32px;
+            scroll-margin-top: 60px;
+        }
+
+        .policy-block-num {
+            font-size: var(--fs-micro);
+            font-weight: 500;
+            color: var(--steel-mid);
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .policy-block h3 {
+            font-size: var(--fs-h3);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: var(--lh-h3);
+            color: var(--deep-dark-steel);
+            margin-bottom: 24px;
+        }
+
+        .policy-block p {
+            font-size: var(--fs-body);
+            color: var(--deep-industrial-steel);
+            line-height: var(--lh-normal);
+            margin-bottom: 16px;
+        }
+
+        .policy-block ul {
+            margin-left: 24px;
+            margin-bottom: 24px;
+            color: var(--deep-industrial-steel);
+            font-size: var(--fs-body);
+        }
+
+        .policy-block li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-yellow {
+            background-color: var(--alert-yellow);
+            color: var(--deep-dark-steel);
+            padding: 2px 8px;
+            font-weight: 500;
+            display: inline-block;
+            line-height: 1.1;
+        }
+
+        .inline-mail {
+            color: var(--deep-dark-steel);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s var(--cb-mechanical);
+        }
+
+        .inline-mail:hover {
+            background-color: var(--alert-yellow);
+            text-decoration: none;
+        }
+
+        /* STOPKA */
+        .footer-meta {
+            margin-top: 140px;
+            padding-top: 64px;
+            border-top: 1px solid var(--light-steel);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            font-size: var(--fs-micro);
+            color: var(--steel-mid);
+        }
+
+        .footer-meta p strong {
+            color: var(--deep-dark-steel);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 1200px) {
+            .main-header { padding: 32px 24px; }
+            .logo-container { height: 160px; }
+            .hero { padding-top: 280px; }
+            .hero-content-block { padding-left: 0; padding-right: 0; }
+            .policy-section { padding-left: 24px; padding-right: 24px; }
+            .tech-marker { padding: 16px 24px; }
+            .policy-grid { grid-template-columns: 1fr; gap: 48px; }
+            .policy-sidebar { position: static; }
+            .hero h1 { font-size: 2.8rem; max-width: 100%; }
+            .policy-block h3 { font-size: 2rem; }
+            .footer-meta { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body id="body-context">
+
+    <header class="main-header" id="header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/hbp_logo_white.png" alt="HBP Logo" class="logo-img" id="mainLogo">
+            </a>
+        </div>
+        <a href="index.html" class="back-link">&larr; Powrót do serwisu</a>
+    </header>
+
+    <div class="container">
+
+        <div class="hero-outer">
+            <div class="hero-bg-image"></div>
+            <section class="hero">
+                <div class="hero-content-block">
+                    <div class="hero-title-mask">
+                        <h1>Polityka Prywatności</h1>
+                    </div>
+                    <p class="hero-sub">Dbamy o Twoją prywatność. Niniejszy dokument wyjaśnia, w jaki sposób zbieramy i przetwarzamy dane osobowe użytkowników strony internetowej <span class="highlight-yellow">hydromixbp.eu</span>.</p>
+                    <p class="doc-date">Data ostatniej aktualizacji: <span class="tektur-digit">24</span> listopada <span class="tektur-digit">2026</span> r.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="tech-divider-container"><div class="tech-line"></div><div class="tech-marker">+</div></div>
+
+        <section class="policy-section">
+            <div class="policy-grid">
+                
+                <aside class="policy-sidebar">
+                    <p><strong>SPIS TREŚCI</strong></p>
+                    <ul>
+                        <li><a href="#sec-01"><span class="tektur-digit">01 /</span> Administrator danych</a></li>
+                        <li><a href="#sec-02"><span class="tektur-digit">02 /</span> Zakres i cel przetwarzania</a></li>
+                        <li><a href="#sec-03"><span class="tektur-digit">03 /</span> Okres przechowywania</a></li>
+                        <li><a href="#sec-04"><span class="tektur-digit">04 /</span> Odbiorcy danych</a></li>
+                        <li><a href="#sec-05"><span class="tektur-digit">05 /</span> Analityka i cookies</a></li>
+                        <li><a href="#sec-06"><span class="tektur-digit">06 /</span> Twoje prawa</a></li>
+                        <li><a href="#sec-07"><span class="tektur-digit">07 /</span> Profilowanie</a></li>
+                    </ul>
+                </aside>
+
+                <main class="policy-content">
+
+                    <article id="sec-01" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">01 /</span> ADMINISTRATOR</span>
+                        <h3>Kto jest administratorem Twoich danych?</h3>
+                        <p>Administratorem Twoich danych osobowych jest:</p>
+                        <p>
+                            <strong>HYDROMIX BP SP. Z O.O.</strong><br>
+                            z siedzibą w: ul. Zarzecze 25/2, 30-134 Kraków, Polska<br>
+                            wpisana do rejestru przedsiębiorców KRS pod numerem: <span class="tektur-digit">0001099488</span><br>
+                            NIP: <span class="tektur-digit">6772508954</span>, REGON: <span class="tektur-digit">528327471</span>
+                        </p>
+                        <p>Kontakt e-mail: <a href="mailto:biuro@hydromixbp.eu" class="inline-mail">biuro@hydromixbp.eu</a></p>
+                    </article>
+
+                    <article id="sec-02" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">02 /</span> ZAKRES I CEL</span>
+                        <h3>Jakie dane przetwarzamy i w jakim celu?</h3>
+                        <p>Strona zbiera wyłącznie dane, które podajesz dobrowolnie za pośrednictwem formularza kontaktowego:</p>
+                        <ul>
+                            <li><strong>Zakres danych:</strong> adres e-mail (oraz ewentualne dane osobowe zawarte w treści wysłanej wiadomości).</li>
+                            <li><strong>Cel przetwarzania:</strong> obsługa zapytania przesłanego przez formularz oraz prowadzenie bieżącej korespondencji.</li>
+                            <li><strong>Podstawa prawna:</strong> nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO), polegający na budowaniu relacji i odpowiedzi na wiadomości przesyłane przez użytkowników strony.</li>
+                        </ul>
+                    </article>
+
+                    <article id="sec-03" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">03 /</span> RETENCJA DANYCH</span>
+                        <h3>Jak długo przechowujemy Twoje dane?</h3>
+                        <p>Dane będą przechowywane przez okres niezbędny do udzielenia odpowiedzi i zakończenia korespondencji w danej sprawie, a po tym czasie maksymalnie przez okres przedawnienia ewentualnych roszczeń.</p>
+                    </article>
+
+                    <article id="sec-04" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">04 /</span> POWIERZENIE I TRANSFER</span>
+                        <h3>Odbiorcy danych</h3>
+                        <p>Twoje dane nie są sprzedawane ani przekazywane podmiotom trzecim w celach marketingowych. Dostęp do nich mają wyłącznie:</p>
+                        <ul>
+                            <li>Upoważnione osoby działające w imieniu Spółki.</li>
+                            <li>Dostawca usług hostingowych / poczty elektronicznej obsługujący naszą domenę, działający na podstawie umowy powierzenia przetwarzania danych.</li>
+                        </ul>
+                        <p>Dane nie są przekazywane poza Europejski Obszar Gospodarczy (EOG) ani do organizacji międzynarodowych.</p>
+                    </article>
+
+                    <article id="sec-05" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">05 /</span> TELEMETRIA</span>
+                        <h3>Narzędzia analityczne i pliki cookies</h3>
+                        <p>Strona wykorzystuje wyłącznie niezbędne techniczne pliki cookies służące do poprawnego wyświetlania witryny i działania formularza.</p>
+                        <p>Na stronie nie są stosowane zewnętrzne skrypty śledzące, piksele marketingowe ani narzędzia analityczne (takie jak Google Analytics czy Meta Pixel).</p>
+                    </article>
+
+                    <article id="sec-06" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">06 /</span> UPRAWNIENIA RODO</span>
+                        <h3>Twoje prawa</h3>
+                        <p>W związku z przetwarzaniem Twoich danych osobowych przysługuje Ci prawo do:</p>
+                        <ul>
+                            <li>żądania dostępu do swoich danych oraz otrzymania ich kopii,</li>
+                            <li>sprostowania (poprawienia) danych,</li>
+                            <li>usunięcia danych („prawo do bycia zapomnianym”),</li>
+                            <li>ograniczenia przetwarzania,</li>
+                            <li>wniesienia sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie,</li>
+                            <li>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa), jeśli uznasz, że przetwarzanie narusza przepisy RODO.</li>
+                        </ul>
+                        <p>W celu realizacji swoich praw napisz do nas na adres: <a href="mailto:biuro@hydromixbp.eu" class="inline-mail">biuro@hydromixbp.eu</a></p>
+                    </article>
+
+                    <article id="sec-07" class="policy-block">
+                        <span class="policy-block-num"><span class="tektur-digit">07 /</span> AUTOMATYZACJA</span>
+                        <h3>Zautomatyzowane podejmowanie decyzji</h3>
+                        <p>Twoje dane nie podlegają profilowaniu ani zautomatyzowanemu podejmowaniu decyzji wywołującemu skutki prawne.</p>
+                    </article>
+
+                </main>
+            </div>
+
+            <footer class="footer-meta">
+                <p><strong>Hydromix BP Sp. z o.o.</strong>Business Precision</p>
+                <p><strong>Adres pracowni</strong>ul. Studzienki 25<br>32-085 Modlnica</p>
+                <p><strong>Rejestr spółki</strong>ul. Zarzecze 25/2<br>30-134 Kraków<br>NIP: 677 250 89 54<br>KRS: 0001099488<br>REGON: 528327471</p>
+                <p><strong>Kontakt bezpośredni</strong>biuro@hydromixbp.eu</p>
+            </footer>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
